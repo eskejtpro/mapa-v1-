@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* Custom Leaflet Dark & Theming Enhancements */
+.leaflet-container {
+  background-color: #0c0a09;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+/* Hide default leaflet attribution styling and zoom buttons since we use custom Windows HUD controls */
+.leaflet-control-zoom {
+  display: none !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(12, 10, 9, 0.75) !important;
+  color: #78716c !important;
+  font-size: 9px !important;
+  backdrop-filter: blur(4px);
+  border-top-left-radius: 6px;
+  padding: 2px 6px !important;
+}
+.leaflet-control-attribution a {
+  color: #d97706 !important;
+  text-decoration: none;
+}
+
+/* Custom Marker Divs */
+.snap-marker-container,
+.story-marker-container {
+  background: transparent;
+  border: none;
+}
+
+/* Story Ring Pulse Animation */
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7), 0 0 12px rgba(245, 158, 11, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(245, 158, 11, 0), 0 0 20px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0), 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes ring-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.story-ring-pulsing,
+.snap-story-pulsing {
+  animation: ring-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.story-gradient-ring,
+.snap-story-gradient-ring {
+  background: linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6, #3b82f6, #10b981, #f59e0b);
+  background-size: 300% 300%;
+  animation: ring-gradient-shift 4s ease infinite;
+}
+
+@keyframes ring-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom Scrollbar for Windows Desktop */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(28, 25, 23, 0.5);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.5);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 162, 158, 0.8);
+}
+
+/* Map Style Filters for Vintage & Cyberpunk */
+.map-tiles-vintage {
+  filter: sepia(0.65) contrast(1.05) brightness(0.95) hue-rotate(-15deg);
+}
+
+.map-tiles-cyberpunk {
+  filter: invert(1) hue-rotate(180deg) saturate(1.8) contrast(1.2);
+}
+
+.map-tiles-night {
+  filter: brightness(0.85) contrast(1.15);
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1.04) translate(1%, 0.5%);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 12s ease-in-out infinite alternate;
+}

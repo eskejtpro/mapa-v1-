@@ -1,0 +1,6 @@
+{
+  "name": "Mapa Wspomnień",
+  "description": "Desktopowy frontendowy prototyp aplikacji do prywatnego przypisywania zdjęć i filmów do współrzędnych GPS oraz ich przeglądania na mapie offline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
